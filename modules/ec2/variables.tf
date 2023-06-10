@@ -45,20 +45,20 @@ variable "public_subnets"{
 
 variable "tags"{
     type= object({
-        owner=string,
+        Owner=string,
         lab=string
     })
     description ="tags"
     default={
-        owner="janvi.thakkar@intuitive.cloud"
+        Owner="janvi.thakkar@intuitive.cloud"
         lab="web101-Janvi-Thakkar"
     }
 }
 
 
-variable "owner"{
+variable "Owner"{
     type=string
-    description="email id of the owner"
+    description="email id of the Owner"
     default= "janvi.thakkar@intuitive.cloud"
 }
 

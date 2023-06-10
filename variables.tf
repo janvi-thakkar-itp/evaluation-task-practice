@@ -4,9 +4,9 @@ variable "region"{
     default= "us-east-1"
 }
 
-variable "owner"{
+variable "Owner"{
     type=string
-    description="email id of the owner"
+    description="email id of the Owner"
     default= "janvi.thakkar@intuitive.cloud"
 }
 

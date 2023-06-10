@@ -11,11 +11,10 @@ module "alb" {
   
   target_groups = [
     {
-      name_prefix      = "pref-"
+      name      = "${local.tags.lab}-lb-target"
       backend_protocol = "HTTP"
       backend_port     = 80
-      target_type      = "instance"
-      targets          = var.targets
+      vpc_id=   var.vpc_id
     }
   ]
 
@@ -32,5 +31,4 @@ module "alb" {
 
 output "target_group_arns" {
   value=module.alb.target_group_arns
-  
 }

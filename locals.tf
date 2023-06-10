@@ -1,6 +1,6 @@
 locals{
     tags={
-        owner=var.owner
+        Owner=var.Owner
         lab=var.lab
     }  
 
