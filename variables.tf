@@ -90,4 +90,37 @@ variable "az_names"{
     default= ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
 
+variable "ingress_with_cidr_blocks"{
+    type=list
+    description="ingress with cidr blocks"
+    default= [
+    {
+      from_port   = 80
+      to_port     = 80
+      protocol    = "tcp"
+      cidr_blocks = "0.0.0.0/0"
+    },
+    {
+      from_port   = 443
+      to_port     = 443
+      protocol    = "tcp"
+      cidr_blocks = "0.0.0.0/0"
+    }
+  ]
+
+}
+
+variable "egress_with_cidr_blocks" {
+    type=list
+    description="egress with cidr blocks"
+    default=[
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = "0.0.0.0/0"
+    }
+  ]
+}
+
 

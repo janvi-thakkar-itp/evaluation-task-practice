@@ -52,6 +52,28 @@ variable "egress_rules"{
     description = "sg egress rules"
 }
 
+variable "ingress_with_cidr_blocks"{
+    type=list
+    description="ingress with cidr blocks"
+    default= [{}]
+
+}
+
+variable "egress_with_cidr_blocks" {
+    type=list
+    description="egress with cidr blocks"
+    default=[{ }]
+}
+
+variable "number_of_computed_ingress_with_source_security_group_id"{
+    type=number
+    default=0
+}
+
+variable "computed_ingress_with_source_security_group_id" {
+    type=list
+    default=[]
+}
 
 
 
