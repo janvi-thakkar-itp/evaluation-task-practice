@@ -1,5 +1,7 @@
-sudo apt-get update
-sudo apt-get install -y apache2
-sudo systemctl start apache2
-sudo systemctl enable apache2
-echo "The page was created by the user data" | sudo tee /var/www/html/index.html
+sudo yum update -y
+sudo yum install -y httpd
+sudo systemctl start httpd.service
+cd /var/www/html
+sudo su
+export EC2_IP=$(curl http://checkip.amazonaws.com)
+sudo echo "<h1>Responsr FROM Ec2 Instance Running At AZ $EC2_IP </h1>" >index.html

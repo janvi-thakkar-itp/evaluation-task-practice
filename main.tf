@@ -56,6 +56,7 @@ module "alb" {
   vpc_id          = module.vpc.vpc_id
   subnets         = module.vpc.public_subnets
   security_groups = [module.alb_sg.security_group_id]
+
   targets = {
     target1 = {
       target_id = module.asg.asg_id
@@ -88,9 +89,10 @@ module "asg" {
   }
   #Lauch Template
   asg_instance_type     = var.instance_type
-  asg_ami               = "ami-0f3cb259a8ab23fd6"
+  asg_ami               = "ami-022e1a32d3f742bd8"
   asg_security_group_id = module.ec2_sg[0].security_group_id
   asg_tags              = local.tags
+  
 }
 
 ########## requirement 1 ###########

@@ -16,6 +16,7 @@ module "asg" {
   launch_template_name  = "${var.asg_tags.lab}-ec2-lauch"
   image_id          =  var.asg_ami
   security_groups             = [var.asg_security_group_id]
+  user_data = base64encode(templatefile("./userdata.tftpl",{var="vars"}))
 
   # IAM Role & Instance Profile
   create_iam_instance_profile = true
