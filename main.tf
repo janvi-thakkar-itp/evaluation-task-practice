@@ -89,12 +89,27 @@ module "asg" {
   }
   #Lauch Template
   asg_instance_type     = var.instance_type
-  asg_ami               = "ami-022e1a32d3f742bd8"
+  asg_ami               = data.aws_ami.app_ami.image_id
+  # "ami-022e1a32d3f742bd8"
   asg_security_group_id = module.ec2_sg[0].security_group_id
   asg_tags              = local.tags
   
 }
 
+data "aws_ami" "app_ami" {
+
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+}
+}
+
+module "cdn"{
+  source="./modules/cloudfront"
+  domain_name = module.alb.lb_dns_name
+}
 ########## requirement 1 ###########
 # module "ec2"{
 #     source="./modules/ec2"
